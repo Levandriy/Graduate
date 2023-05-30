@@ -1,0 +1,18 @@
+﻿<Window x:Class="Graduate.Windows.StudentCreate"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Graduate.Windows"
+        mc:Ignorable="d"
+        Title="Дополнительные данные регистрации" Height="350" Width="400" Closing="Window_Closing">
+    <StackPanel x:Name="MainPanel" DataContext="{Binding}">
+        <TextBlock Text="Введите группу и ФИО" Style="{StaticResource ColumnHeaderTextBlock}"/>
+        <Separator/>
+        <TextBlock Text="ФИО" Style="{StaticResource HeaderTextBlock}"/>
+        <TextBox Text="{Binding Student.Name}" Style="{StaticResource TextBoxAddEdit}"/>
+        <TextBlock Text="Группа" Style="{StaticResource HeaderTextBlock}"/>
+        <ComboBox ItemsSource="{Binding Groups}" Text="{Binding Gr}" Style="{StaticResource DefaultComboBox}"/>
+        <Button x:Name="Enter" Content="Войти" Style="{StaticResource EditDeleteButton}" Click="Enter_Click"/>
+    </StackPanel>
+</Window>

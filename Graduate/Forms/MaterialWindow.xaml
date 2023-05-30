@@ -1,0 +1,59 @@
+﻿<Window x:Class="Graduate.Forms.MaterialWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Graduate.Forms"
+        mc:Ignorable="d"
+        Title="Материал" Height="650" Width="450" Loaded="Window_Loaded" ResizeMode="NoResize" Closing="Window_Closing">
+    <Grid>
+        <ScrollViewer Margin="0,0,0,60">
+            <StackPanel x:Name="MainPanel" DataContext="{Binding}" Margin="10">
+                <TextBlock Text="Материал" Style="{StaticResource ColumnHeaderTextBlock}"/>
+                <TextBox Text="{Binding Material.Title}" Style="{StaticResource TextBoxAddEdit}"/>
+                <TextBlock Text="Файл" Style="{StaticResource ColumnHeaderTextBlock}"/>
+                <Button x:Name="ChooseFile" Content="Выбрать файл" Click="ChooseFile_Click" Style="{StaticResource EditDeleteButton}"/>
+                <TextBlock Text="Тип" Style="{StaticResource ColumnHeaderTextBlock}"/>
+                <ComboBox Text="{Binding Material.Type}" ItemsSource="{Binding Types}" Style="{StaticResource DefaultComboBox}"/>
+                <TextBlock Text="Теги" Style="{StaticResource ColumnHeaderTextBlock}"/>
+                <ItemsControl VerticalAlignment="Bottom" ItemsSource="{Binding Tags}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Margin="10"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Style="{StaticResource Rounded}" Margin="0,5,0,5">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="{Binding ThemeName}" HorizontalAlignment="Left" VerticalAlignment="Center" TextWrapping="NoWrap" TextAlignment="Left" Padding="10,5,5,5"/>
+                                    <Button x:Name="DeleteTag" Grid.Column="1" Style="{StaticResource ToolsForAddedWin}" HorizontalAlignment="Right" VerticalAlignment="Center" Click="DeleteTag_Click">
+                                        <Button.OpacityMask>
+                                            <ImageBrush ImageSource="/Forms/cross-icon.png" Stretch="Uniform"/>
+                                        </Button.OpacityMask>
+                                    </Button>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Добавить тег" Style="{StaticResource ColumnHeaderTextBlock}"/>
+                    <ComboBox Grid.Column="1" x:Name="AddThemes" ItemsSource="{Binding Themes}" Style="{StaticResource ThemeComboBox}" SelectionChanged="AddThemes_SelectionChanged"/>
+                </Grid>
+            </StackPanel>
+        </ScrollViewer>
+        <WrapPanel VerticalAlignment="Bottom" HorizontalAlignment="Center">
+            <Button x:Name="Save" Content="Сохранить изменения" Click="Save_Click" Style="{StaticResource EditDeleteButton}"/>
+            <Button x:Name="Delete" Content="Удалить" Style="{StaticResource EditDeleteButton}" Click="Delete_Click"/>
+        </WrapPanel>
+    </Grid>
+</Window>

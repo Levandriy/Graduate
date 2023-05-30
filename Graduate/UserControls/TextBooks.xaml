@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="Graduate.UserControls.TextBooks"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Graduate.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded" MouseDoubleClick="UserControl_MouseDoubleClick">
+    <Grid>
+        <StackPanel x:Name="Header" VerticalAlignment="Top">
+            <TextBox x:Name="SearchBox" MinHeight="40" Style="{StaticResource TextBoxSearch}" TextChanged="SearchBox_TextChanged"/>
+        </StackPanel>
+        <ScrollViewer VerticalScrollBarVisibility="Visible" CanContentScroll="True" Margin="0,50,0,0">
+            <ItemsControl x:Name="DataPanel">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" ItemHeight="200" ItemWidth="200"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border x:Name="Element" Style="{StaticResource ShadowBorder}" Margin="10">
+                            <Grid>
+                                <TextBlock Text="{Binding Title}" Style="{StaticResource ItemTitle}"/>
+                                <WrapPanel VerticalAlignment="Top" HorizontalAlignment="Right">
+                                    <Button x:Name="EditMaterial" Style="{StaticResource ToolsButton}" Click="EditMaterial_Click">
+                                        <Button.OpacityMask>
+                                            <ImageBrush ImageSource="/UserControls/pen-icon.png" Stretch="Uniform"/>
+                                        </Button.OpacityMask>
+                                    </Button>
+                                    <Button x:Name="DeleteMaterial" Style="{StaticResource ToolsButton}" Click="DeleteMaterial_Click">
+                                        <Button.OpacityMask>
+                                            <ImageBrush ImageSource="/UserControls/cross-icon.png" Stretch="Uniform"/>
+                                        </Button.OpacityMask>
+                                    </Button>
+                                </WrapPanel>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.ItemsSource>
+                    <CompositeCollection>
+                        <CollectionContainer x:Name="TextBooksItems" Collection="{Binding}"/>
+                        <Border Style="{StaticResource ShadowBorder}" Margin="10">
+                            <Button x:Name="AddMaterial" Style="{StaticResource AddMaterial}" Click="AddMaterial_Click">
+                                <Button.OpacityMask>
+                                    <ImageBrush ImageSource="/UserControls/add-note-icon.png" Stretch="Uniform" TileMode="None">
+                                        <ImageBrush.RelativeTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform CenterY="0.5" CenterX="0.5" ScaleX="0.3" ScaleY="0.3"/>
+                                                <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                                                <RotateTransform CenterX="0.5" CenterY="0.5"/>
+                                                <TranslateTransform/>
+                                            </TransformGroup>
+                                        </ImageBrush.RelativeTransform>
+                                    </ImageBrush>
+                                </Button.OpacityMask>
+                            </Button>
+                        </Border>
+                    </CompositeCollection>
+                </ItemsControl.ItemsSource>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

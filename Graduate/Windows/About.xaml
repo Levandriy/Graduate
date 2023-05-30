@@ -1,0 +1,32 @@
+﻿<Window x:Class="Graduate.Windows.About"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Graduate.Windows"
+        mc:Ignorable="d"
+        Title="О программе" Height="450" Width="600" WindowStartupLocation="CenterScreen" Topmost="True" ResizeMode="NoResize" WindowStyle="ToolWindow">
+    <Grid>
+        <Image Source="/Windows/ForDIPLOM.jpg" Stretch="UniformToFill">
+            <Image.Effect>
+                <BlurEffect Radius="10"/>
+            </Image.Effect>
+        </Image>
+        <StackPanel>
+            <StackPanel.Background>
+                <SolidColorBrush Color="White" Opacity="0.24"/>
+            </StackPanel.Background>
+            <TextBlock Text="О программе" TextAlignment="Center" Margin="20" Padding="10" FontSize="30" FontWeight="Bold"/>
+            <TextBlock Text="Программа создана в рамках дипломного проекта
+                       студентом группы ПО-42
+                       ГБПОУ РО РКРИПТ"
+                       TextWrapping="Wrap"
+                       TextAlignment="Center"
+                       FontSize="24"
+                       Margin="65,20,65,20"
+                       Padding="10"/>
+            <TextBlock Text="Кочубей Л.В." TextAlignment="Center" Padding="10" FontSize="24"/>
+            <TextBlock Text="2022-2023." TextAlignment="Center" Padding="10" FontSize="24"/>
+        </StackPanel>
+    </Grid>
+</Window>

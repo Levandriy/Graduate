@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b0b046cf28e54640a635bb91fc7b78d2" Name="Diagram1" ZoomLevel="94">
+        <EntityTypeShape EntityType="LabsAutomationSystemModel.Groups" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabsAutomationSystemModel.Journal" Width="1.5" PointX="7.5" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabsAutomationSystemModel.Materials" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabsAutomationSystemModel.Students" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabsAutomationSystemModel.Teachers" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabsAutomationSystemModel.Theme_cons" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabsAutomationSystemModel.Themes" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <AssociationConnector Association="LabsAutomationSystemModel.FK__Groups__Teacher__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="LabsAutomationSystemModel.FK__Students__Group__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="LabsAutomationSystemModel.FK__Journal__Student__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="LabsAutomationSystemModel.FK__Theme_con__Matri__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="LabsAutomationSystemModel.FK__Theme_con__Owner__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="LabsAutomationSystemModel.FK__Theme_con__Theme__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="LabsAutomationSystemModel.FK__Journal__Lab__5AEE82B9" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
