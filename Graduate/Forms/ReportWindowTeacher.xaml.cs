@@ -91,6 +91,7 @@ namespace Graduate.Forms
                 App._context.Students.AddOrUpdate(student);
                 App._context.Journal.AddOrUpdate(rep);
                 App._context.SaveChanges();
+                MessageBox.Show("Сохранение успешно");
             }
             catch (Exception ex)
             {
