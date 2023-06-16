@@ -117,7 +117,7 @@ namespace Graduate.UserControls
         {
             OpenFileDialog ReportFile = new OpenFileDialog()
             {
-                Filter = "PDF (*.pdf)|*.pdf|DOCX (*.docx)|*.docx|DOC (*.doc)|*.doc|TXT (*.txt)|*.txt|All files (*.*)|*.*",
+                Filter = "DOCX (*.docx)|*.docx|PDF (*.pdf)|*.pdf|DOC (*.doc)|*.doc|TXT (*.txt)|*.txt|All files (*.*)|*.*",
                 RestoreDirectory = false,
                 Multiselect = false
             };
