@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
+using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Data.Entity.Migrations.Builders;
 using System.Diagnostics;
@@ -9,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -32,6 +35,7 @@ namespace Graduate.Forms
             InitializeComponent();
             var query = App._context.Materials.Find(guid);
             View.Material = query ?? new Materials() { Type = type };
+            App._context.Materials.AddOrUpdate(View.Material);
             GetTags(guid);
         }
         private void GetTags(Guid guid)
@@ -49,6 +53,10 @@ namespace Graduate.Forms
                                ThemeName = theme.Title
                            };
                 View.Tags = tags.ToList();
+            }
+            else
+            {
+                View.Tags = new List<Tag>();
             }
         }
         public class MatView
@@ -153,10 +161,10 @@ namespace Graduate.Forms
         {
             var button = sender as Button;
             var tag = button.DataContext as Tag;
+            Debug.WriteLine("Удаляю:" + tag.ThemeName);
             var cons = App._context.Theme_cons.Find(tag.ConsId);
             App._context.Theme_cons.Remove(cons);
-            App._context.SaveChanges();
-            GetTags(View.Material.Id);
+            View.Tags.Remove(tag);
             MainPanel.DataContext = null;
             MainPanel.DataContext = View;
         }
@@ -174,11 +182,10 @@ namespace Graduate.Forms
                     Matrial = View.Material.Id
                 };
                 App._context.Theme_cons.Add(cons);
-                GetTags(View.Material.Id);
+                View.Tags.Add(new Tag() { ConsId = cons.Id, ThemeName = Theme });
                 MainPanel.DataContext = null;
                 MainPanel.DataContext = View;
             }
-            
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -198,6 +205,20 @@ namespace Graduate.Forms
                     Debug.WriteLine("Поменял контекст на работы");
                 }
                 win.Topmost = true;
+            }
+            foreach (var entry in App._context.ChangeTracker.Entries())
+            {
+                switch (entry.State)
+                {
+                    case EntityState.Modified:
+                    case EntityState.Deleted:
+                        entry.State = EntityState.Modified; //Revert changes made to deleted entity.
+                        entry.State = EntityState.Unchanged;
+                        break;
+                    case EntityState.Added:
+                        entry.State = EntityState.Detached;
+                        break;
+                }
             }
         }
     }

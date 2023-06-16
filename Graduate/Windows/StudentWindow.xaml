@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Graduate.Windows"
         mc:Ignorable="d"
-        Title="Личный кабинет студента" Height="450" Width="800" Loaded="Window_Loaded" Closing="Window_Closing" DataContextChanged="Window_DataContextChanged">
+        Title="Личный кабинет студента" Height="450" Width="800" Loaded="Window_Loaded" Closing="Window_Closing" DataContextChanged="Window_DataContextChanged" WindowStartupLocation="CenterScreen">
     <Grid Background="White">
         <StackPanel x:Name="SidePanel" HorizontalAlignment="Left">
             <ToggleButton x:Name="TextBooks" Checked="MenuButton_Checked" Style="{StaticResource SidePanelButtons}" Click="TextBooks_Click">

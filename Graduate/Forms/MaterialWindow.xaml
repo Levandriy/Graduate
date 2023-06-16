@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Graduate.Forms"
         mc:Ignorable="d"
-        Title="Материал" Height="650" Width="450" Loaded="Window_Loaded" ResizeMode="NoResize" Closing="Window_Closing">
+        Title="Материал" Height="650" Width="450" Loaded="Window_Loaded" Topmost="False" ResizeMode="NoResize" Closing="Window_Closing" WindowStartupLocation="CenterScreen">
     <Grid>
         <ScrollViewer Margin="0,0,0,60">
             <StackPanel x:Name="MainPanel" DataContext="{Binding}" Margin="10">
